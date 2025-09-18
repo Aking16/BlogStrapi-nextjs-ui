@@ -16,8 +16,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 28,
-          paddingLeft: 12,
-          paddingRight: 12,
+          paddingLeft: 16,
+          paddingRight: 16,
         },
         contained: {
           backgroundColor: "black",
