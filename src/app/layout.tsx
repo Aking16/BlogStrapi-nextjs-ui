@@ -1,4 +1,5 @@
 import Container from "@/components/shared/container";
+import Footer from "@/components/shared/footer";
 import NavBar from "@/components/shared/nav-bar";
 import ThemeProvider from "@/context/theme-provider";
 import { CssBaseline } from "@mui/material";
@@ -25,6 +26,7 @@ export default function RootLayout({
             <Container>
               {children}
             </Container>
+            <Footer />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
