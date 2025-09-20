@@ -18,6 +18,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { InputBase } from '@mui/material';
+import { theme } from '@/context/theme-provider';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
@@ -32,7 +33,7 @@ const Search = styled('div')(({ theme }) => ({
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('md')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',
   },
@@ -46,6 +47,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color: "black"
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -59,6 +61,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
+  },
+  '& .MuiInputBase-input::placeholder': {
+    color: theme.palette.common.black
   },
 }));
 
@@ -90,25 +95,28 @@ export default function NavBar() {
   return (
     <Box sx={{ display: 'flex', padding: 5 }}>
       <CssBaseline />
-      <AppBar component="nav" color="transparent" variant="outlined">
+      <AppBar
+        component="nav"
+        variant="outlined"
+        sx={theme => ({ backgroundColor: theme.palette.background.default })}
+      >
         <Toolbar>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', md: 'block' }, color: "black", mr: 3 }}
           >
             BlogStrapi
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexGrow: 1 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1 }}>
             {navItems.map((item) => (
               <Button key={item} variant="text">
                 {item}
@@ -124,7 +132,7 @@ export default function NavBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <Button variant="contained">
               Register
             </Button>
@@ -140,7 +148,7 @@ export default function NavBar() {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', md: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
