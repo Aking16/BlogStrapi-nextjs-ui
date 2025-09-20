@@ -1,16 +1,32 @@
-import { IconButton } from "@mui/material";
-import React from "react";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import { useColorScheme } from "@mui/material/styles";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import { Button, IconButton, Typography } from "@mui/material";
+import { useColorScheme } from "@mui/material/styles";
+import { FC } from "react";
 
-const ThemeToggler = () => {
+interface ThemeTogglerProps {
+  iconOnly?: boolean;
+}
+
+const ThemeToggler: FC<ThemeTogglerProps> = ({ iconOnly }) => {
   const { mode, setMode } = useColorScheme();
 
+  if (iconOnly) {
+    return (
+      <IconButton onClick={() => setMode(mode === "dark" ? "light" : "dark")}>
+        {mode === "dark" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
+      </IconButton>
+    );
+  }
+
   return (
-    <IconButton onClick={() => setMode(mode === "dark" ? "light" : "dark")}>
+    <Button
+      sx={{ gap: 0.5 }}
+      onClick={() => setMode(mode === "dark" ? "light" : "dark")}
+    >
       {mode === "dark" ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />}
-    </IconButton>
+      <Typography>{mode}</Typography>
+    </Button>
   );
 };
 

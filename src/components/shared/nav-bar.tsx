@@ -3,7 +3,7 @@
 import ThemeToggler from "@/components/ui/theme-toggler";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { InputBase } from "@mui/material";
+import { InputBase, Stack } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -30,11 +30,12 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.primary.main, 0.25),
   },
-  marginRight: theme.spacing(2),
   marginLeft: 0,
+  marginRight: 0,
   width: "100%",
   [theme.breakpoints.up("md")]: {
     marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     width: "auto",
   },
 }));
@@ -89,6 +90,10 @@ export default function NavBar() {
           </ListItem>
         ))}
       </List>
+      <Stack spacing={1}>
+        <Button variant="contained">Register</Button>
+        <ThemeToggler />
+      </Stack>
     </Box>
   );
 
@@ -98,7 +103,12 @@ export default function NavBar() {
       <AppBar
         component="nav"
         variant="outlined"
-        sx={(theme) => ({ backgroundColor: theme.palette.background.default })}
+        sx={(theme) => ({
+          borderLeftWidth: 0,
+          borderRightWidth: 0,
+          borderTopWidth: 0,
+          backgroundColor: theme.palette.background.default,
+        })}
       >
         <Toolbar>
           <IconButton
@@ -127,7 +137,9 @@ export default function NavBar() {
               </Button>
             ))}
           </Box>
-          <ThemeToggler />
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <ThemeToggler iconOnly />
+          </Box>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

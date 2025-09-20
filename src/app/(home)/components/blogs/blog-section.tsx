@@ -5,8 +5,12 @@ import BlogCategories from "./blog-categories";
 
 const BlogSection = () => {
   return (
-    <Stack sx={{ my: 10 }} spacing={5} direction="row">
-      <Box sx={{ width: "70%" }}>
+    <Stack
+      sx={{ my: 10 }}
+      spacing={5}
+      direction={{ xs: "column-reverse", md: "row" }}
+    >
+      <Box sx={{ width: { md: "70%" } }}>
         {Array.from({ length: 3 }).map((_, index) => (
           <BlogCard
             id="id"

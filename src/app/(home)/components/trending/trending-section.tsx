@@ -11,7 +11,7 @@ const TrendingSection = () => {
           Trending on BlogStrapi
         </Typography>
       </Stack>
-      <Grid container spacing={2} columns={4}>
+      <Grid container spacing={2} columns={{ sm: 2, md: 4 }}>
         {Array.from({ length: 8 }).map((_, index) => (
           <Grid key={index} size={1}>
             <TrendingCard

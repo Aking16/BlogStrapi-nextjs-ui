@@ -1,11 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import ImageLayout from "./image-layout";
 
 const HeroSection = () => {
   return (
-    <Box sx={{ display: "flex", alignItems: "center", my: 8 }}>
+    <Stack
+      sx={{ justifyContent: "center", alignItems: "center", my: 8 }}
+      direction={{ md: "row" }}
+    >
       <Stack spacing={4} sx={{ flexGrow: 1 }}>
         <Typography variant="h1" fontWeight="bold">
           Stay curious.
@@ -19,7 +22,7 @@ const HeroSection = () => {
       </Stack>
 
       <ImageLayout />
-    </Box>
+    </Stack>
   );
 };
 
