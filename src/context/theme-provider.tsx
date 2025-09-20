@@ -12,6 +12,7 @@ import "@fontsource/source-sans-pro/400.css";
 import "@fontsource/source-sans-pro/600.css";
 import "@fontsource/source-sans-pro/700.css";
 import "@fontsource/source-sans-pro/900.css";
+import NextTopLoader from "nextjs-toploader";
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -69,7 +70,12 @@ export const theme = createTheme({
 });
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+  return (
+    <MuiThemeProvider theme={theme}>
+      <NextTopLoader color={theme.palette.secondary.main} />
+      {children}
+    </MuiThemeProvider>
+  );
 };
 
 export default ThemeProvider;

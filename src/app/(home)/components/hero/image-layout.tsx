@@ -25,18 +25,21 @@ export default function ImageLayout() {
           alt="Bed"
           width={200}
           height={200}
+          style={{ borderRadius: 10 }}
         />
         <Image
           src="/images/hero-img-1.png"
           alt="Bed"
           width={200}
           height={200}
+          style={{ borderRadius: 10 }}
         />
         <Image
           src="/images/hero-img-1.png"
           alt="Bed"
           width={200}
           height={200}
+          style={{ borderRadius: 10 }}
         />
       </Stack>
       <Stack direction="row" spacing={2}>
@@ -46,6 +49,7 @@ export default function ImageLayout() {
             alt="Bed"
             width={308}
             height={200}
+            style={{ borderRadius: 10 }}
           />
         </Item>
         <Item>
@@ -54,6 +58,7 @@ export default function ImageLayout() {
             alt="Bed"
             width={308}
             height={200}
+            style={{ borderRadius: 10 }}
           />
         </Item>
       </Stack>

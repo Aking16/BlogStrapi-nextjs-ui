@@ -17,6 +17,7 @@
     "@mui/material": "^7.3.2",
     "@mui/material-nextjs": "^7.3.2",
     "next": "15.5.3",
+    "nextjs-toploader": "^3.9.17",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
