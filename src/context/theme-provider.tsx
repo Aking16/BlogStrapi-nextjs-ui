@@ -4,13 +4,23 @@ import {
   createTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material/styles";
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
+
+import "@fontsource/source-sans-pro/200.css";
+import "@fontsource/source-sans-pro/300.css";
+import "@fontsource/source-sans-pro/400.css";
+import "@fontsource/source-sans-pro/600.css";
+import "@fontsource/source-sans-pro/700.css";
+import "@fontsource/source-sans-pro/900.css";
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
 export const theme = createTheme({
+  typography: {
+    fontFamily: '"Source Sans Pro", serif',
+  },
   colorSchemes: {
     dark: {
       palette: {
