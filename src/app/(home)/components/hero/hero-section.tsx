@@ -1,7 +1,7 @@
-import { Box, Typography } from '@mui/material';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import ImageLayout from './image-layout';
+import { Box, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import ImageLayout from "./image-layout";
 
 const HeroSection = () => {
   return (

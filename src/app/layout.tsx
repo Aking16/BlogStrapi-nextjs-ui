@@ -23,9 +23,7 @@ export default function RootLayout({
           <ThemeProvider>
             <CssBaseline />
             <NavBar />
-            <Container>
-              {children}
-            </Container>
+            <Container>{children}</Container>
             <Footer />
           </ThemeProvider>
         </AppRouterCacheProvider>

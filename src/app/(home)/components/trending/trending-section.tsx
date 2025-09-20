@@ -1,6 +1,6 @@
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import { Box, Grid, Stack, Typography } from '@mui/material';
-import TrendingCard from './trending-card';
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { Box, Grid, Stack, Typography } from "@mui/material";
+import TrendingCard from "./trending-card";
 
 const TrendingSection = () => {
   return (
@@ -12,7 +12,7 @@ const TrendingSection = () => {
         </Typography>
       </Stack>
       <Grid container spacing={2} columns={4}>
-        {Array.from({ length: 8 }).map((_, index) =>
+        {Array.from({ length: 8 }).map((_, index) => (
           <Grid key={index} size={1}>
             <TrendingCard
               title="Test Title"
@@ -21,7 +21,7 @@ const TrendingSection = () => {
               index={index}
             />
           </Grid>
-        )}
+        ))}
       </Grid>
     </Box>
   );

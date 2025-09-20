@@ -1,13 +1,19 @@
-import { BlogCategoryType, BlogType } from '@/types/blogs';
-import { Box, Stack, Typography } from '@mui/material';
-import Image from 'next/image';
-import { FC } from 'react';
+import { BlogCategoryType, BlogType } from "@/types/blogs";
+import { Box, Stack, Typography } from "@mui/material";
+import Image from "next/image";
+import { FC } from "react";
 
 interface BlogCardProps extends BlogType {
   category: BlogCategoryType;
 }
 
-const BlogCard: FC<BlogCardProps> = ({ title, subTitle, readDuration, image, category }) => {
+const BlogCard: FC<BlogCardProps> = ({
+  title,
+  subTitle,
+  readDuration,
+  image,
+  category,
+}) => {
   return (
     <Stack
       direction="row"
@@ -26,16 +32,9 @@ const BlogCard: FC<BlogCardProps> = ({ title, subTitle, readDuration, image, cat
         <Typography variant="h5" fontWeight="bold">
           {title}
         </Typography>
-        <Typography>
-          {subTitle}
-        </Typography>
+        <Typography>{subTitle}</Typography>
       </Box>
-      <Image
-        src={image}
-        alt='img'
-        width={150}
-        height={150}
-      />
+      <Image src={image} alt="img" width={150} height={150} />
     </Stack>
   );
 };

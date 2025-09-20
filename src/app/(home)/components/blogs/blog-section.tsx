@@ -1,13 +1,13 @@
-import { Box, Stack } from '@mui/material';
-import React from 'react';
-import BlogCard from './blog-card';
-import BlogCategories from './blog-categories';
+import { Box, Stack } from "@mui/material";
+import React from "react";
+import BlogCard from "./blog-card";
+import BlogCategories from "./blog-categories";
 
 const BlogSection = () => {
   return (
     <Stack sx={{ my: 10 }} spacing={5} direction="row">
       <Box sx={{ width: "70%" }}>
-        {Array.from({ length: 3 }).map((_, index) =>
+        {Array.from({ length: 3 }).map((_, index) => (
           <BlogCard
             id="id"
             title="Lorem ipsum dolor sit amet"
@@ -20,7 +20,7 @@ const BlogSection = () => {
             category={{ id: "id", name: "test category" }}
             key={index}
           />
-        )}
+        ))}
       </Box>
       <Box>
         <BlogCategories />
