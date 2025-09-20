@@ -1,9 +1,14 @@
 "use client";
 
+import {
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "@/components/ui/search-input";
 import ThemeToggler from "@/components/ui/theme-toggler";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { InputBase, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -15,58 +20,22 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { alpha, styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 import { useState } from "react";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.primary.main, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.primary.main, 0.25),
+const navItems = [
+  {
+    title: "home",
+    href: "/",
   },
-  marginLeft: 0,
-  marginRight: 0,
-  width: "100%",
-  [theme.breakpoints.up("md")]: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    width: "auto",
+  {
+    title: "write",
+    href: "/write",
   },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: theme.palette.primary.main,
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-  "& .MuiInputBase-input::placeholder": {
-    color: theme.palette.primary.main,
-  },
-}));
+];
 
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -83,9 +52,9 @@ export default function NavBar() {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.title} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -132,8 +101,13 @@ export default function NavBar() {
           </Typography>
           <Box sx={{ display: { xs: "none", md: "flex" }, flexGrow: 1 }}>
             {navItems.map((item) => (
-              <Button key={item} variant="text">
-                {item}
+              <Button
+                key={item.title}
+                variant="text"
+                LinkComponent={Link}
+                href={item.href}
+              >
+                {item.title}
               </Button>
             ))}
           </Box>
