@@ -1,15 +1,34 @@
 "use client";
 
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import React, { FC, ReactNode } from 'react';
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+} from "@mui/material/styles";
+import React, { FC, ReactNode } from "react";
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
 export const theme = createTheme({
+  colorSchemes: {
+    dark: {
+      palette: {
+        primary: {
+          main: "#fff",
+        },
+      },
+    },
+    light: {
+      palette: {
+        primary: {
+          main: "#000",
+        },
+      },
+    },
+  },
   shape: {
-    borderRadius: 28
+    borderRadius: 28,
   },
   components: {
     MuiButton: {
@@ -19,29 +38,28 @@ export const theme = createTheme({
           paddingLeft: 16,
           paddingRight: 16,
         },
-        contained: {
-          backgroundColor: "black",
-          color: "white"
-        },
-        text: {
-          color: "#676767"
-        },
-        outlined: {
-          borderColor: "black",
-          color: "#676767"
-        }
+        contained: ({ theme }) => ({
+          ...(theme.palette.mode === "light" && {
+            backgroundColor: "black",
+            color: "white",
+          }),
+        }),
+        outlined: ({ theme }) => ({
+          ...(theme.palette.mode === "light" && {
+            borderColor: "black",
+            color: "#676767",
+          }),
+        }),
+        text: ({ theme }) => ({
+          color: theme.palette.text.secondary,
+        }),
       },
     },
   },
 });
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-  return (
-    <MuiThemeProvider theme={theme}>
-      {children}
-    </MuiThemeProvider>
-
-  );
+  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
 };
 
 export default ThemeProvider;
