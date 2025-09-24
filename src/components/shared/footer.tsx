@@ -13,9 +13,10 @@ import { FC } from "react";
 
 interface FooterProps {
   links: LinkType[];
+  siteName: string;
 }
 
-const Footer: FC<FooterProps> = ({ links }) => {
+const Footer: FC<FooterProps> = ({ links, siteName }) => {
   return (
     <Box
       component="footer"
@@ -48,7 +49,7 @@ const Footer: FC<FooterProps> = ({ links }) => {
           </Stack>
 
           <Typography variant="body2" color="text.secondary">
-            © {new Date().getFullYear()} BlogStrapi. All rights reserved.
+            © {new Date().getFullYear()} {siteName}. All rights reserved.
           </Typography>
         </Stack>
       </Container>

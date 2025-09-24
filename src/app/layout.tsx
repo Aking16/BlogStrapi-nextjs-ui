@@ -40,7 +40,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { header, footer } = await getGlobalData();
+  const { siteName, header, footer } = await getGlobalData();
 
   return (
     <html lang="en">
@@ -50,7 +50,7 @@ export default async function RootLayout({
             <CssBaseline />
             <Header {...header} />
             <Container>{children}</Container>
-            <Footer {...footer} />
+            <Footer siteName={siteName} {...footer} />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
