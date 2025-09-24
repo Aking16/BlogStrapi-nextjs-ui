@@ -6,9 +6,10 @@ import {
   StyledInputBase,
 } from "@/components/ui/search-input";
 import ThemeToggler from "@/components/ui/theme-toggler";
+import { LinkType, LogoType } from "@/types/elements";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Stack } from "@mui/material";
+import { Stack, useColorScheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -23,22 +24,19 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import { useState } from "react";
+import { FC, useState } from "react";
+import { StrapiImage } from "../ui/strapi-image";
+
+interface HeaderProps {
+  logo: LogoType;
+  links: LinkType[];
+}
 
 const drawerWidth = 240;
-const navItems = [
-  {
-    title: "home",
-    href: "/",
-  },
-  {
-    title: "write",
-    href: "/write",
-  },
-];
 
-export default function NavBar() {
+export const Header: FC<HeaderProps> = ({ logo, links }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { mode } = useColorScheme();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -46,13 +44,23 @@ export default function NavBar() {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        BlogStrapi
-      </Typography>
+      <Stack
+        direction="row"
+        sx={{ my: 2, alignItems: "center", justifyContent: "center" }}
+      >
+        <StrapiImage
+          alt={logo.alternativeText}
+          src={logo.image}
+          width={24}
+          height={24}
+          style={{ filter: mode === "dark" ? "invert(1)" : "invert(0)" }}
+        />
+        <Typography variant="h6">BlogStrapi</Typography>
+      </Stack>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item.title} disablePadding>
+        {links.map((item) => (
+          <ListItem key={item.id} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item.title} />
             </ListItemButton>
@@ -88,21 +96,34 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={(theme) => ({
-              display: { xs: "none", md: "block" },
-              mr: 3,
-              color: theme.palette.text.primary,
-            })}
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex", alignItems: "center" },
+            }}
           >
-            BlogStrapi
-          </Typography>
+            <StrapiImage
+              alt={logo.alternativeText}
+              src={logo.image}
+              width={24}
+              height={24}
+              style={{ filter: mode === "dark" ? "invert(1)" : "invert(0)" }}
+            />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={(theme) => ({
+                display: { xs: "none", md: "block" },
+                mr: 3,
+                color: theme.palette.text.primary,
+              })}
+            >
+              BlogStrapi
+            </Typography>
+          </Box>
           <Box sx={{ display: { xs: "none", md: "flex" }, flexGrow: 1 }}>
-            {navItems.map((item) => (
+            {links.map((item) => (
               <Button
-                key={item.title}
+                key={item.id}
                 variant="text"
                 LinkComponent={Link}
                 href={item.href}
@@ -149,4 +170,4 @@ export default function NavBar() {
       </nav>
     </Box>
   );
-}
+};
