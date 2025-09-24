@@ -6,6 +6,7 @@ const BASE_URL = getStrapiURL();
 
 const globalSettingQuery = qs.stringify({
   populate: {
+    favicon: true,
     header: {
       populate: {
         logo: {
@@ -13,22 +14,14 @@ const globalSettingQuery = qs.stringify({
             image: true
           }
         },
-        links: true,
+        links: true
       },
     },
-    // footer: {
-    //   populate: {
-    //     logo: {
-    //       populate: {
-    //         image: {
-    //           fields: ["url", "alternativeText"],
-    //         },
-    //       },
-    //     },
-    //     navigation: true,
-    //     policies: true,
-    //   },
-    // },
+    footer: {
+      populate: {
+        links: true
+      }
+    }
   },
 });
 

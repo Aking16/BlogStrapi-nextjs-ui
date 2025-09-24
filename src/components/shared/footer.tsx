@@ -1,15 +1,21 @@
 "use client";
 
+import { LinkType } from "@/types/elements";
 import {
   Box,
   Container,
+  Link as MUILink,
   Stack,
   Typography,
-  Link as MUILink,
 } from "@mui/material";
 import Link from "next/link";
+import { FC } from "react";
 
-const Footer = () => {
+interface FooterProps {
+  links: LinkType[];
+}
+
+const Footer: FC<FooterProps> = ({ links }) => {
   return (
     <Box
       component="footer"
@@ -28,30 +34,17 @@ const Footer = () => {
           spacing={2}
         >
           <Stack direction="row" spacing={3}>
-            <MUILink
-              component={Link}
-              href="#"
-              color="text.secondary"
-              underline="hover"
-            >
-              About
-            </MUILink>
-            <MUILink
-              component={Link}
-              href="#"
-              color="text.secondary"
-              underline="hover"
-            >
-              Contact
-            </MUILink>
-            <MUILink
-              component={Link}
-              href="#"
-              color="text.secondary"
-              underline="hover"
-            >
-              Privacy
-            </MUILink>
+            {links.map((item) => (
+              <MUILink
+                component={Link}
+                href={item.href}
+                color="text.secondary"
+                underline="hover"
+                key={item.id}
+              >
+                {item.title}
+              </MUILink>
+            ))}
           </Stack>
 
           <Typography variant="body2" color="text.secondary">
